@@ -13,7 +13,7 @@ public class Main {
         int N = Integer.parseInt(input.readLine()), num;
 
         for (int i = 0; i < N; i++) {
-            in = input.readLine();;
+            in = input.readLine();
             if (in.charAt(0) == '+') {
                 num = Integer.parseInt(in.substring(1).strip());
                 q.add(num);
@@ -23,7 +23,7 @@ public class Main {
             }
         }
 
-        Stack_ head = deleted.head;
+        Node head = deleted.head;
         while (head != null){
             System.out.println(head.data);
             head = head.next;
@@ -36,14 +36,14 @@ public class Main {
 
 }
 class queue{
-    Stack_ head;
-    Stack_ tail;
+    Node head;
+    Node tail;
     queue(){
         this.head = null;
         this.tail = null;
     }
     void add(int n) {
-        Stack_ node = new Stack_(n);
+        Node node = new Node(n);
         if (tail == null) head = node;
         else {
             tail.next = node;
@@ -57,18 +57,12 @@ class queue{
             head.prev = null;
         }
     }
-    void removeTail() {
-        if (tail != null) {
-            tail = tail.prev;
-            tail.next = null;
-        }
-    }
 }
-class Stack_ {
-    Stack_ next;
-    Stack_ prev;
+class Node {
+    Node next;
+    Node prev;
     int data;
-    Stack_ (int n) {
+    Node (int n) {
         this.data = n;
     }
 }
