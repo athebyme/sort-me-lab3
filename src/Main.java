@@ -3,11 +3,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    static void queue() throws IOException {
+    static void queue_task() throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-        Stack_ q = new Stack_(0);
-        Stack_ deleted = new Stack_(0);
+        queue q = new queue();
+        queue deleted = new queue();
 
         String in;
         int N = Integer.parseInt(input.readLine()), num;
@@ -31,23 +31,17 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        queue();
+        queue_task();
     }
 
 }
-
-class Stack_ {
-    Stack_ next;
-    Stack_ prev;
+class queue{
     Stack_ head;
     Stack_ tail;
-
-    int data;
-
-    Stack_ (int n) {
-        this.data = n;
+    queue(){
+        this.head = null;
+        this.tail = null;
     }
-
     void add(int n) {
         Stack_ node = new Stack_(n);
         if (tail == null) head = node;
@@ -57,17 +51,24 @@ class Stack_ {
         }
         tail = node;
     }
-
+    void removeHead(){
+        if(head != null){
+            if(head.next != null){head = head.next;}
+            head.prev = null;
+        }
+    }
     void removeTail() {
         if (tail != null) {
             tail = tail.prev;
             tail.next = null;
         }
     }
-    void removeHead(){
-        if(head != null){
-            if(head.next != null){head = head.next;}
-            head.prev = null;
-        }
+}
+class Stack_ {
+    Stack_ next;
+    Stack_ prev;
+    int data;
+    Stack_ (int n) {
+        this.data = n;
     }
 }
