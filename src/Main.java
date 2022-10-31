@@ -7,7 +7,6 @@ public class Main {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
         queue q = new queue();
-        queue deleted = new queue();
 
         String in;
         int N = Integer.parseInt(input.readLine()), num;
@@ -18,15 +17,9 @@ public class Main {
                 num = Integer.parseInt(in.substring(1).strip());
                 q.add(num);
             } else{
-                deleted.add(q.head.data);
+                System.out.println(q.head.data);
                 q.removeHead();
             }
-        }
-
-        Node head = deleted.head;
-        while (head != null){
-            System.out.println(head.data);
-            head = head.next;
         }
     }
 
